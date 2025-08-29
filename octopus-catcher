@@ -1,0 +1,26 @@
+<html>
+  <body style="background-color: cyan;">
+    <img id="squidward" style="position: absolute;-webkit- transition: all 0.5s;" src="octopus.png" width="100" onmousedown="caughtIt()">
+    <p id="scoreText">Score: 0</p>
+    <script>
+      let score = 0
+      let seconds = 0
+      let timer = window.setInterval(moveIt, 5000)
+      function moveIt() {
+        seconds++
+        document.getElementById("squidward").style.left = Math.random() * 900 + "px"
+        document.getElementById("squidward").style.top = Math.random() * 700 + "px"
+        if(seconds > 30) {
+          clearInterval(timer)
+          alert("You scored: " + score)
+          location.reload()
+        }
+
+        function caughtIt() {
+          score++
+          document.getElementById("scoreText").innerText = "Score: " + score
+        }
+      }
+    </script>
+  </body>
+</html>
